@@ -1,0 +1,63 @@
+\documentclass[a4j]{jsarticle}
+
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{here}
+\usepackage{ascmac}
+\usepackage{listings,jlisting}
+\usepackage{time}
+
+\renewcommand{\thesubsection}{\arabic{section} - (\alph{subsection})}
+\renewcommand{\thesection}{課題\arabic{section}}
+
+\lstset{
+	language=[Objective]caml,
+	float=hbp,
+	basicstyle=\tt\small,
+	numberstyle=\sf\footnotesize,
+	columns=flexible,
+	tabsize=2,
+	frame=single,
+	extendedchars=true,
+	showspaces=false,
+	showstringspaces=false,
+	numbers=left,
+	breaklines=true,
+	breakautoindent=true,
+	captionpos=b
+}
+
+\makeatother
+\setlength{\oddsidemargin}{-2mm}
+\setlength{\evensidemargin}{-2mm}
+\setlength{\topmargin}{-30mm}
+\setlength{\textwidth}{164mm}
+\setlength{\textheight}{250mm}
+
+\makeatletter
+\title{\rm ソフトウェア技法 \\ 第n回}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{description}
+	\item[\rm \large 学籍番号:201311350]
+	\item[\rm \large 氏名:河原 悟]
+\end{description}
+
+\section{}
+\subsection{}
+\subsubsection*{code}
+\lstinputlisting{./proj1/1-a.ml}
+\subsubsection*{result}
+\begin{lstlisting}
+# deriv (Mul (Add (Var "x", Var "y"), Add (Var "y", Int 2))) "x";;
+- : exp =
+Add (Mul (Add (Var "x", Var "y"), Add (Int 1, Int 0)),
+Mul (Add (Var "y", Int 2), Add (Int 0, Int 0)))
+\end{lstlisting}
+
+\end{document}
+
