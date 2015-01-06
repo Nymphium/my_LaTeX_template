@@ -1,8 +1,17 @@
-\documentclass[a4j]{jsarticle}
+\documentclass[10pt]{article}
 
-\usepackage[dvipdfmx]{graphicx}
-\usepackage{here,ascmac,listings,jlisting,time}
-\usepackage[dvipsnames]{xcolor}
+\usepackage[quiet]{fontspec}
+\usepackage{xltxtra}
+\setmainfont{Moga90HMincho}
+\setsansfont{Source Han Sans JP}
+\setmonofont{Monaco}
+\XeTeXlinebreaklocale "ja"
+
+\usepackage{here}
+\usepackage{ascmac}
+\usepackage{listings}
+% \usepackage{times}
+\usepackage{xcolor}
 
 \definecolor{cream}{rgb}{1,1,0.8}
 \definecolor{colKeys}{rgb}{0,0,1}
@@ -43,7 +52,7 @@
 	breaklines=true,
 	breakautoindent=true,
 	captionpos=b,
-	keywords=[2]{String, true, false, equals, s1311350},
+	keywords=[2]{String, true, false, equals, s201XXXXX},
 	keywords=[3]{int, static, class, public, boolean, char, void},
 	keywords=[4]{new, while, break, return, continue, if, for, try, catch, do, done, Exception, else},
 	keywords=[5]{Math},
@@ -60,7 +69,7 @@
 
 
 \makeatletter
-\title{\bf データ構造とアルゴリズム レポート \\ 課題: 動的計画法}
+\title{\bf データ構造とアルゴリズム レポート \\ 課題: hoge}
 \author{}
 \date{}
 
@@ -70,7 +79,7 @@
 
 \begin{description}
 	\item[\rm \large 締切日:YYYY\, MM/DD\, hh:mm]
-	\item[\rm \large 提出日:\the\year\, \the\month/\the\day\, \the\hour\/:\the\minute]
+	% \item[\rm \large 提出日:\the\year\, \the\month/\the\day\, \the\hour\/:\the\minute]
 	\item[\rm \large 学籍番号:XXXXXXXXX]
 	\item[\rm \large 氏名:name]
 	\item[\rm \large クラス:class]
@@ -78,8 +87,9 @@
 
 \section{}
 
-\lstlistingname{./source.java}
-\lstset{numbers=left}
-\lstinputlisting{source-name}
+% \lstlistingname{./source.java}
+% \lstset{numbers=left}
+% \lstinputlisting{source-name}
+
 \end{document}
 

@@ -1,10 +1,14 @@
-\documentclass[a4j]{jsarticle}
+\documentclass[10pt]{article}
 
-\usepackage[dvipdfmx]{graphicx}
-\usepackage{here}
-\usepackage{ascmac}
-\usepackage{listings,jlisting}
-\usepackage{time}
+\setmainfont{Moga90HMincho}
+\setsansfont{Source Han Sans JP}
+\setmonofont{Monaco}
+% \newfontfamily\kmb{GN-KMBFont}
+\XeTeXlinebreaklocale "ja"
+
+\usepackage{xltxtra}
+\usepackage[quiet]{fontspec}
+\usepackage{listings}
 
 \renewcommand{\thesubsection}{\arabic{section} - (\alph{subsection})}
 \renewcommand{\thesection}{課題\arabic{section}}
@@ -50,7 +54,7 @@
 \section{}
 \subsection{}
 \subsubsection*{code}
-\lstinputlisting{./proj1/1-a.ml}
+% \lstinputlisting{./proj1/1-a.ml}
 \subsubsection*{result}
 \begin{lstlisting}
 # deriv (Mul (Add (Var "x", Var "y"), Add (Var "y", Int 2))) "x";;
