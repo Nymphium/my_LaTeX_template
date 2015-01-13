@@ -1,4 +1,4 @@
-\usepackage{listings}
+\usepackage[final,writefile]{listings}
 \usepackage{xcolor}
 
 \definecolor{cream}{rgb}{1,1,0.8}
@@ -31,6 +31,7 @@
 	tabsize=2,
 	frame=single,
 	extendedchars=true,
+	inputencoding=utf8x,
 	showspaces=false,
 	showstringspaces=false,
 	numbers=left,
@@ -38,8 +39,6 @@
 	breakautoindent=true,
 	captionpos=b
 }
-
-% \renewcommand{\lstlistingname}{\noindent\textgt{}}
 
 \newcommand{\mylisting}[2][]{
 	\lstinputlisting[caption={\rm{\detokenize{#2}}},#1]{#2}
