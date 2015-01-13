@@ -1,5 +1,6 @@
 *.aux
 *.log
 *.pdf
-test.*
+test.java
+test.ml
 date.tex
