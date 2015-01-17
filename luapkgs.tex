@@ -1,0 +1,16 @@
+\usepackage{luatexja-fontspec}
+\usepackage{unicode-math}
+\setmainfont[Ligatures=TeX]{TakaoExMincho}
+\setmainjfont[CJKShape=JIS1990,Ligatures=TeX]{TakaoExMincho}
+\setsansfont[Ligatures=TeX]{Source Han Sans JP}
+\setsansjfont[Ligatures=TeX]{Source Han Sans JP}
+\setmonofont[Ligatures=TeX]{Monaco}
+\unimathsetup{math-style=ISO,bold-style=ISO}
+\setmathfont{xits-math}
+
+\newcommand{\editdate}{
+	\directlua{
+		tex.print(os.date())
+	}
+}
+
