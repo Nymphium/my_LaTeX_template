@@ -13,4 +13,5 @@
 		+ \setmonofont{Monaco}(monofontにMonacoフォントを使用)すると､listingでのソースコード内の日本語が豆腐になる問題
 
 	* LuaLaTeX
-		+ luapkgsの\editdateでos.date("%D")とかしたいけど'%'をエスケープとかできない｡困った｡
+		+ luapkgsの\editdateで`os.date("%D")`とかしたいけど'%'をエスケープとかできない｡困った｡
+
