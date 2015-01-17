@@ -1,6 +1,4 @@
 - how to use
-	+ *dsa_hinagata.tex*とか*software_technique_ex.tex*を参照
-
 	+ *xelpkgs*にXeLaTeX用のいろいろを入れた
 
 	+ *luapkgs*にLuaLaTeX用のいろいろを入れた
@@ -13,3 +11,4 @@
 
 	+ \setmonofont{Monaco}(monofontにMonacoフォントを使用)すると､listingでのソースコード内の日本語が豆腐になる問題
 
+	+ luapkgsの\editdateでos.date("%D")とかしたいけど'%'をエスケープとかできない｡困った｡
