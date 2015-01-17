@@ -3,6 +3,8 @@
 
 	+ *xelpkgs*にXeLaTeX用のいろいろを入れた
 
+	+ *luapkgs*にLuaLaTeX用のいろいろを入れた
+
 	+ *mylisting*にlistingsのいろいろをry
 
 
