@@ -10,7 +10,9 @@
 
 \newcommand{\editdate}{
 	\directlua{
-		tex.print(os.date())
+		f = assert(loadfile(os.getenv("PWD") .. "/../lua/editdate.lua"))
+		f()
+		editdate()
 	}
 }
 
