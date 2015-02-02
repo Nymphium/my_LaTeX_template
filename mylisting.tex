@@ -40,7 +40,7 @@
 \newcommand{\mylisting}[2][]{
 	\bgroup
 	\renewcommand*{\lstlistingname}{\tt\small Code}
-	\lstinputlisting[caption={\tt\small{#2}},#1]{#2}
+	\lstinputlisting[caption={\tt\small\detokenize{#2}},#1]{#2}
 	\egroup
 }
 
