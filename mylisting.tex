@@ -34,10 +34,16 @@
 	numbers=left,
 	breaklines=true,
 	breakautoindent=true,
-	captionpos=b
+	captionpos=t,
 }
 
 \newcommand{\mylisting}[2][]{
-	\lstinputlisting[caption={\rm{\detokenize{#2}}},#1]{#2}
+	\bgroup
+	\renewcommand*{\lstlistingname}{\tt\small Code}
+	\lstinputlisting[caption={\tt\small{#2}},#1]{#2}
+	\egroup
 }
+
+
+\lstnewenvironment{result}[2][]{\vspace{18pt}\lstset{numbers=none,nolol,title={\tt\small {#2}},#1}}{\vspace{18pt}}
 
