@@ -3,3 +3,4 @@
 *.pdf
 *.fls
 .gitignore
+test/
