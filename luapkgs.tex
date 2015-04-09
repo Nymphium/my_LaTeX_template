@@ -1,11 +1,16 @@
+\usepackage[no-math]{fontspec}
+\usepackage{luatexja,luatexja-otf,luacode,metalogo}
 \usepackage{luatexja-fontspec}
+\usepackage[deluxe]{luatexja-preset}
+\usepackage{luatexbase-modutils}
 \usepackage{unicode-math}
-\setmainjfont[Ligatures=TeX,BoldFont=Source Han Sans JP]{TakaoExMincho}
-\setsansjfont[Ligatures=TeX,BoldFont=Source Han Sans JP]{Source Han Sans JP}
-\setmonofont[Ligatures=TeX]{Monaco}
+\setmainjfont{Source Han Sans JP}
+\setromanfont{TakaoExMincho}
+\setsansfont{Source Han Sans JP}
+\setmonofont{Monaco}
 \unimathsetup{math-style=ISO}
 \setmathfont{xits-math}
-
+\addfontfeatures{Ligatures=TeX}
 \newcommand{\editdate}{
 	\directlua{
 		p = string.char(37)
