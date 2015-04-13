@@ -1,0 +1,27 @@
+\usepackage{bxdpx-beamer}
+\usecolortheme{lily}
+\setbeamerfont{frametitle}{size=\footnotesize,family=\rmfamily}
+\setbeamerfont{section in toc}{family=\rmfamily}
+\setbeamerfont{subsection in toc}{family=\rmfamily}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+
+\newif\iflattersubsect
+\AtBeginSection[]{
+	\begin{frame}<beamer>
+		\tableofcontents[currentsection]
+	\end{frame}
+	\lattersubsectfalse
+}
+\AtBeginSubsection[]{
+	\iflattersubsect
+	\begin{frame}<beamer>
+		\tableofcontents[currentsubsection]
+	\end{frame}
+	\fi
+	\lattersubsecttrue
+}
+
+\setbeamertemplate{navigation symbols}{}
+\newcommand{\sectionize}[1]{{\LARGE $\bullet$ #1}\vspace{1\zw}}
+\mathversion{bold}
+
