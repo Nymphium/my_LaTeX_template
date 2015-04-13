@@ -1,20 +1,13 @@
-\usepackage[no-math]{fontspec}
 \usepackage{luatexja,luatexja-otf,luacode,metalogo}
 \usepackage{luatexja-fontspec}
-\usepackage[deluxe]{luatexja-preset}
 \usepackage{luatexbase-modutils}
-\usepackage{unicode-math}
-\setmainjfont{Source Han Sans JP}
-\setromanfont{TakaoExMincho}
-\setsansfont{Source Han Sans JP}
+\usepackage{luatexja-adjust}
 \setmonofont{Monaco}
-\unimathsetup{math-style=ISO}
-\setmathfont{xits-math}
-\addfontfeatures{Ligatures=TeX}
+\ltjenableadjust
+
 \newcommand{\editdate}{
-	\directlua{
-		p = string.char(37)
-		tex.print(os.date(p .. "Y " .. p .. "m/" .. p .. "d " .. p .. "H:" .. p .. "M"))
+	\luaexec{
+		tex.write(os.date("\%Y \%m/\%d \%H:\%M"))
 	}
 }
 

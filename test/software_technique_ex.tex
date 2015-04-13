@@ -1,12 +1,11 @@
 \documentclass{article}
 
 \input{../xelpkgs}
-% \input{../luapkgs}
+\input{../mylisting}
 
 \renewcommand{\thesubsection}{\arabic{section} - (\alph{subsection})}
 \renewcommand{\thesection}{課題\arabic{section}}
 
-\input{../mylisting}
 \lstset{language=[Objective]caml}
 
 \setlength{\oddsidemargin}{-2mm}
@@ -30,11 +29,17 @@
 \section{}
 \subsection{}
 \subsubsection*{code}
+
 \mylisting{test.ml}
+
 \subsubsection*{result}
 \begin{lstlisting}
-	んなもんねーよ
+日本語は出ますか。
 \end{lstlisting}
+
+\begin{result}{test}
+hoge
+\end{result}
 
 \end{document}
 

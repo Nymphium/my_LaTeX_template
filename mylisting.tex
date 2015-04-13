@@ -1,5 +1,6 @@
 \usepackage[final,writefile]{listings}
 \usepackage{xcolor}
+\usepackage{ifluatex,ifxetex}
 
 \definecolor{cream}{HTML}{FFFFCC}
 \definecolor{gray}{HTML}{626262}
@@ -41,14 +42,37 @@
 	\bgroup
 	\renewcommand*{\lstlistingname}{\tt\small Code}
 	\lstinputlisting[caption={\tt\small\detokenize{#2}},#1]{#2}
+	\ifluatex
+		\vspace{1\zw}
+		\else
+			\ifxetex
+				\vspace{11pt}
+			\else
+			\vspace{1zw}
+		\fi
+	\fi
+	
 	\egroup
 }
 
-\lstnewenvironment{result}{
+\lstnewenvironment{result}[2][]{
 	\vspace{18pt}
 	\lstset{
+		language=,
 		numbers=none,
 		nolol,
+		title={#2},
+		#1
 	}
-}{\vspace{18pt}}
+}{
+	\ifluatex
+		\vspace{1\zw}
+		\else
+			\ifxetex
+				\vspace{11pt}
+			\else
+			\vspace{1zw}
+		\fi
+	\fi
+}
 
