@@ -1,6 +1,18 @@
-\usepackage[final,writefile]{listings}
+\usepackage{listings}
 \usepackage{xcolor}
 \usepackage{ifluatex,ifxetex}
+
+\ifxetex
+\else
+	\ifluatex
+	\else
+		\usepackage{jlisting}
+		% \makeatletter
+		% \def\lst@title@dropdelim\hskip1zw{}
+		% \makeatother
+	\fi
+\fi
+
 
 \definecolor{cream}{HTML}{FFFFCC}
 \definecolor{gray}{HTML}{626262}
@@ -41,14 +53,15 @@
 \newcommand{\mylisting}[2][]{
 	\bgroup
 	\renewcommand*{\lstlistingname}{\tt\small Code}
+	\renewcommand{\thelstlisting}{\arabic{lstlisting}:\hspace{-.3em}}
 	\lstinputlisting[caption={\tt\small\detokenize{#2}},#1]{#2}
 	\ifluatex
 		\vspace{1\zw}
 		\else
 			\ifxetex
-				\vspace{11pt}
+				\vspace{1em}
 			\else
-			\vspace{1zw}
+			\vspace{1em}
 		\fi
 	\fi
 	\egroup
@@ -69,7 +82,7 @@
 			\ifxetex
 				\vspace{11pt}
 			\else
-			\vspace{1zw}
+			\vspace{1em}
 		\fi
 	\fi
 }
