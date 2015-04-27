@@ -53,7 +53,6 @@
 \newcommand{\mylisting}[2][]{
 	\bgroup
 	\renewcommand*{\lstlistingname}{\tt\small Code}
-	\renewcommand{\thelstlisting}{\arabic{lstlisting}:\hspace{-.3em}}
 	\lstinputlisting[caption={\tt\small\detokenize{#2}},#1]{#2}
 	\ifluatex
 		\vspace{1\zw}
