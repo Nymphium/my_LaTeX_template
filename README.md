@@ -1,20 +1,16 @@
 - how to use
-	+ *xelpkgs*にXeLaTeX用のいろいろを入れた
+	+ sty/time24.sty
+		
+		Mike Piffのtime.styを24h表記にしました｡`\nowtf`で24h表記になります｡`\fullnow`コマンドは`\the\year\ \the\month\slash\the\day\ \nowtf`を表示します｡これはpTeXのみなあらずLuaTeX､XeTeXでも使えます｡
 
-	+ *luapkgs*にLuaLaTeX用のいろいろを入れた
+	+ luapkgs.tex
 
-	+ *mylisting*にlistingsのいろいろをry
+		`\input{luapkgs}`
 
+		`\editdate`で`\fullnow`と同様の表示が得られます｡
+	
+	+ xelpkgs.tex
 
-- 異臭(issue)
-	* XeLaTeX
-		+ time.styがうまく使えないので`mkdate.sh`を動かして適当なゴミを作って呼んでいる｡コンパイルした時間をXeLaTeXで使える方法を知りたいです｡
+		`\input{xelpkgs}`
 
-		+ ~~\setmonofont{Monaco}(monofontにMonacoフォントを使用)すると､listingでのソースコード内の日本語が豆腐になる問題~~
-			- monoフォントにIPAGothicを使ったら表示できました｡
-
-	* LuaLaTeX
-		+ ~~luapkgsの\editdateで`os.date("%D")`とかしたいけど'%'をエスケープとかできない｡困った｡~~
-
-		+ `p = string.char(37)`として文字コードから叩いていったぜ｡
-
+ハハハ
