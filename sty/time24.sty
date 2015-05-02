@@ -1,0 +1,62 @@
+\def\filename{time24.sty}
+%% This is time24.sty
+%% Mike Piff's time.sty modification
+%%
+\ProvidesPackage{time24}
+\def\nowtf{{%
+   \def\Time{3}%
+   \def\Hour{4}%
+   \def\Minute{5}%
+   \count\Time=\time\relax
+   \count\Hour=\count\Time\relax
+   \divide\count\Hour by 60\relax%%hours past midnight
+   \count\Minute=\count\Hour\relax
+   \multiply\count\Minute by -60\relax
+   \advance\count\Minute by \count\Time\relax %%minutes past hour
+   \ifnum\count\Hour=0
+      \count\Hour=12
+   \else
+	  \ifnum\count\Hour<10
+	     0%
+	  \fi
+   \fi
+   \the\count\Hour\relax:%
+   \ifnum\count\Minute<10
+      0%
+   \fi
+   \the\count\Minute\relax
+}}
+\def\now{{%
+   \def\Time{3}%
+   \def\Hour{4}%
+   \def\Minute{5}%
+   \count\Time=\time\relax
+   \ifnum\count\Time=0
+      \count\Time=1440 %%force 12pm
+   \fi
+   \count\Hour=\count\Time\relax
+   \divide\count\Hour by 60\relax%%hours past midnight
+   \count\Minute=\count\Hour\relax
+   \multiply\count\Minute by -60\relax
+   \advance\count\Minute by \count\Time\relax %%minutes past hour
+   \ifnum\count\Hour=0
+      \count\Hour=12
+   \else
+      \ifnum\count\Hour>12
+         \advance\count\Hour by-12
+      \fi
+   \fi
+   \the\count\Hour\relax:%
+   \ifnum\count\Minute<10
+      0%
+   \fi
+   \the\count\Minute\relax
+   \ifnum\count\Time>720
+      pm%
+   \else
+      am%
+   \fi
+}}
+\def\fullnow{{%
+\the\year\relax\ \the\month\relax\slash\the\day\relax\ \nowtf\relax
+}}
