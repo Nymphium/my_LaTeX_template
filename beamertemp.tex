@@ -1,22 +1,106 @@
-\usepackage{bxdpx-beamer}
-\usecolortheme{lily}
-\setbeamerfont{frametitle}{size=\footnotesize,family=\rmfamily}
-\setbeamerfont{section in toc}{family=\rmfamily}
-\setbeamerfont{subsection in toc}{family=\rmfamily}
-\renewcommand{\kanjifamilydefault}{\gtdefault}
-
-\AtBeginSection[]{
-	\begin{frame}<beamer>
-		\tableofcontents[currentsection,sectionstyle=show/shaded,subsectionstyle=show/shaded]
-	\end{frame}
-}
-\AtBeginSubsection[]{
-	\begin{frame}<beamer>
-		\tableofcontents[currentsubsection,sectionstyle=show/shaded,subsectionstyle=show/shaded]
-	\end{frame}
-}
-
-\setbeamertemplate{navigation symbols}{}
-\newcommand{\sectionize}[1]{{\LARGE $\bullet$ #1}\vspace{1\zw}}
-\mathversion{bold}
-
+\usepackage{multicol,hanging}%
+\usecolortheme{lily}%
+\mathversion{bold}%
+\makeatletter%
+\newcounter{tocpage}%
+\newif\ifaftertitle\aftertitlefalse%
+\renewcommand{\title}{\@dblarg\beamer@title}%
+\long\def\beamer@title[#1]#2{%
+	\def\thetitle{#2}%
+	\def\inserttitle{#2}%
+	\def\beamer@shorttitle{#1}%
+}%
+\def\maketitle{\ifbeamer@inframe\titlepage\else\frame{\titlepage}\fi\aftertitletrue}%
+\renewcommand{\footnoterule}{}%
+\def\@makefnmark{\hbox{\@textsuperscript{{\usebeamercolor[fg]{footnote mark}\usebeamerfont*{footnote mark}{*\@thefnmark}}}}}%
+\def\inserttotaltocpage{1}%
+\AtEndDocument{%
+	\clearpage%
+	\beamer@tempcount=\c@page\advance\beamer@tempcount by -1%
+	\if@filesw%
+		\immediate\write\@auxout{\string\@writefile{nav}%
+		{\noexpand\headcommand{\noexpand\def\noexpand\inserttotaltocpage{\thetocpage}}}}%
+	\fi%
+}%
+\makeatother%
+\newcounter{currentwotocframenumber}%
+\newcounter{wotoctotalframenumber}%
+\setbeamerfont{frametitle}{size=\footnotesize,family=\rmfamily}%
+\setbeamerfont{section in toc}{family=\rmfamily}%
+\setbeamerfont{subsection in toc}{family=\rmfamily}%
+\setbeamercolor{section in head/foot}{fg=blue}%
+\setbeamercolor{subsection in head/foot}{fg=blue}%
+\setbeamercolor{footline}{fg=gray}%
+\setbeamercolor{frametitle}{fg=green}%
+\setbeamercolor{headline}{fg=blue}%
+\setbeamercolor{subheadline}{fg=gray}%
+\setbeamertemplate{navigation symbols}{}%
+\addtobeamertemplate{headline}{\vspace*{.5cm}}{}%
+\addtobeamertemplate{footline}{}{\vspace*{1.5cm}}%
+\setbeamertemplate{footnote}{%
+	\tiny%
+	\makebox[2em][l]{\insertfootnotemark}\hspace{-.7\zw}\insertfootnotetext%
+}%
+\setbeamertemplate{frametitle}{%
+	\begin{beamercolorbox}{frametitle}%
+		\hfill\hbox{{\large$\bullet$\insertframetitle}}%
+	\end{beamercolorbox}%
+}%
+\addtobeamertemplate{frametitle}{\vspace*{-.5cm}\hspace*{3\zw}}{}%
+\newcommand{\Setfooter}{%
+	\ifaftertitle%
+	\setbeamertemplate{footline}{%
+		\leavevmode%
+		\begin{beamercolorbox}{footline}%
+			\small%
+			\hspace{.4\zw}\hbox{\insertsectionhead\ifx\insertsubsectionhead\empty\else -- \insertsubsectionhead\fi}%
+			\setcounter{wotoctotalframenumber}{\inserttotalframenumber}%
+			\addtocounter{wotoctotalframenumber}{-\inserttotaltocpage}%
+			\addtocounter{wotoctotalframenumber}{-1}%
+			\setcounter{currentwotocframenumber}{\theframenumber}%
+			\addtocounter{currentwotocframenumber}{-1}%
+			\addtocounter{currentwotocframenumber}{-\thetocpage}%
+			\hfill\hbox{\thecurrentwotocframenumber/\thewotoctotalframenumber\hspace{.4\zw}}%
+		\end{beamercolorbox}%
+	}%
+	\else\fi%
+}%
+\newcommand{\Setheadline}{%
+	\setbeamertemplate{headline}{%
+		\begin{beamercolorbox}{headline}%
+			\centering\hbox{\large\thetitle}%
+		\end{beamercolorbox}%
+	}%
+}%
+\newcommand\Setsubheadline{%
+	\setbeamertemplate{headline}{%
+		\begin{beamercolorbox}{subheadline}%
+			\centering\hbox{\large\thetitle}%
+		\end{beamercolorbox}%
+	}%
+}%
+\AtBeginSection[]{%
+	\Setheadline%
+	\setbeamertemplate{footline}{}%
+	\begin{frame}<beamer>%
+		\begin{multicols}{2}%
+			\tableofcontents[currentsection,sectionstyle=show/shaded,subsectionstyle=show/shaded]%
+		\end{multicols}%
+	\end{frame}%
+	\stepcounter{tocpage}%
+	\Setfooter%
+	\setbeamertemplate{headline}{}%
+}%
+\AtBeginSubsection[]{%
+	\Setsubheadline%
+	\setbeamertemplate{footline}{}%
+	\begin{frame}<beamer>%
+		\begin{multicols}{2}%
+			\tableofcontents[currentsubsection,sectionstyle=show/shaded,subsectionstyle=show/shaded]%
+		\end{multicols}%
+	\end{frame}%
+	\stepcounter{tocpage}%
+	\Setfooter%
+	\setbeamertemplate{headline}{}%
+}%
+\Setfooter%
