@@ -1,7 +1,11 @@
-\usepackage{multicol,hanging}%
+\usepackage{multicol,hanging,ifluatex}%
 \usecolortheme{lily}%
 \mathversion{bold}%
 \makeatletter%
+\ifluatex\else%
+\newlength\zw%
+\zw=1zw
+\fi
 \newcounter{tocpage}%
 \newif\ifaftertitle\aftertitlefalse%
 \renewcommand{\title}{\@dblarg\beamer@title}%
@@ -13,7 +17,7 @@
 \def\maketitle{\ifbeamer@inframe\titlepage\else\frame{\titlepage}\fi\aftertitletrue}%
 \renewcommand{\footnoterule}{}%
 \def\@makefnmark{\hbox{\@textsuperscript{{\usebeamercolor[fg]{footnote mark}\usebeamerfont*{footnote mark}{*\@thefnmark}}}}}%
-\def\inserttotaltocpage{1}%
+\def\inserttotaltocpage{0}%
 \AtEndDocument{%
 	\clearpage%
 	\beamer@tempcount=\c@page\advance\beamer@tempcount by -1%
@@ -36,7 +40,7 @@
 \setbeamercolor{subheadline}{fg=gray}%
 \setbeamertemplate{navigation symbols}{}%
 \addtobeamertemplate{headline}{\vspace*{.5cm}}{}%
-\addtobeamertemplate{footline}{}{\vspace*{1.5cm}}%
+\addtobeamertemplate{footline}{}{\vspace*{3\zw}}%
 \setbeamertemplate{footnote}{%
 	\tiny%
 	\makebox[2em][l]{\insertfootnotemark}\hspace{-.7\zw}\insertfootnotetext%
@@ -46,13 +50,13 @@
 		\hfill\hbox{{\large$\bullet$\insertframetitle}}%
 	\end{beamercolorbox}%
 }%
-\addtobeamertemplate{frametitle}{\vspace*{-.5cm}\hspace*{3\zw}}{}%
+\addtobeamertemplate{frametitle}{\vspace*{-.4cm}\hspace*{2\zw}}{}%
 \newcommand{\Setfooter}{%
 	\ifaftertitle%
 	\setbeamertemplate{footline}{%
 		\leavevmode%
 		\begin{beamercolorbox}{footline}%
-			\small%
+			\tiny%
 			\hspace{.4\zw}\hbox{\insertsectionhead\ifx\insertsubsectionhead\empty\else -- \insertsubsectionhead\fi}%
 			\setcounter{wotoctotalframenumber}{\inserttotalframenumber}%
 			\addtocounter{wotoctotalframenumber}{-\inserttotaltocpage}%
