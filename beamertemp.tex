@@ -9,7 +9,7 @@
 \makeatletter%
 \ifluatex\else%
 	\newlength\zw%
-	\zw=1zw%
+	\zw=1zw\relax%
 \fi%
 \newcounter{tocpage}%
 \newif\ifnofooter\nofootertrue%
@@ -27,7 +27,7 @@
 \def\maketitle{\ifbeamer@inframe\titlepage\else\frame{\titlepage}\fi\nofooterfalse}%
 \renewcommand{\footnoterule}{}%
 \def\@makefnmark{\hbox{\@textsuperscript{{\usebeamercolor[fg]{footnote mark}\usebeamerfont*{footnote mark}{*\@thefnmark}}}}}%
-\def\inserttotaltocpage{0}%
+\def\inserttotaltocpage{0\relax}%
 \AtEndDocument{%
 	\clearpage%
 	\beamer@tempcount=\c@page\advance\beamer@tempcount by -1%
@@ -54,7 +54,7 @@
 \setbeamercolor{headline}{fg=blue}%
 \setbeamercolor{subheadline}{fg=gray}%
 \setbeamertemplate{navigation symbols}{}%
-\addtobeamertemplate{footline}{}{\vspace*{3\zw}}%
+% \addtobeamertemplate{footline}{}{\vspace*{3\zw}}%
 %%%%% }}}
 %%%%% {{{
 \setbeamertemplate{footnote}{%
@@ -78,7 +78,7 @@
 		\setcounter{currentwotocframenumber}{\theframenumber}%
 		\addtocounter{currentwotocframenumber}{-1}%
 		\addtocounter{currentwotocframenumber}{-\thetocpage}%
-		\hfill\hbox{\ifnofooter\else\thecurrentwotocframenumber/\thewotoctotalframenumber\fi\hspace{.6\zw}}%
+		\hfill\hbox{\ifnofooter\else\thecurrentwotocframenumber/\thewotoctotalframenumber\fi\hspace{.8\zw}}%
 	\end{beamercolorbox}%
 }%
 \setbeamertemplate{headline}{%

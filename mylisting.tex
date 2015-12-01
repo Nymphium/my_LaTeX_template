@@ -2,10 +2,8 @@
 \usepackage{xcolor}
 \usepackage{ifluatex,ifxetex}
 
-\ifxetex
-\else
-	\ifluatex
-	\else
+\ifxetex \else
+	\ifluatex \else
 		\usepackage{jlisting}
 		% \makeatletter
 		% \def\lst@title@dropdelim\hskip1zw{}
@@ -54,26 +52,26 @@
 	keywords={class,when,for,in,while,with,do,import,from,return,and,or,local,not,break,continue,extends},
 	keywordstyle=\ttfamily\color{yellow},
 	comment=[l]{--},
-	keywords=[2]{if,else,elseif},
+	keywords=[2]{if,else,elseif,when,switch,then},
 	keywordstyle=[2]\ttfamily\color{text},
 	morestring=[b]",
 	morestring=[b]'
 }
 
-\newcommand{\mylisting}[2][]{
-	\bgroup
-	\renewcommand*{\lstlistingname}{\tt\small Code}
-	\lstinputlisting[caption={\tt\small\detokenize{#2}},#1]{#2}
-	\ifluatex
-		\vspace{1\zw}
-		\else
-			\ifxetex
-				\vspace{1em}
-			\else
-			\vspace{1em}
-		\fi
-	\fi
-	\egroup
+\newcommand{\mylisting}[2][]{%
+	\bgroup%
+	\renewcommand*{\lstlistingname}{\tt\small Code}%
+	\lstinputlisting[caption={\tt\small\detokenize{#2}},#1]{#2}%
+	\ifluatex%
+		\vspace{1\zw}%
+		\else%
+			\ifxetex%
+				\vspace{1em}%
+			\else%
+			\vspace{1em}%
+		\fi%
+	\fi%
+	\egroup%
 }
 
 \lstnewenvironment{result}[2][]{
@@ -87,10 +85,10 @@
 }{
 	\ifluatex
 		\vspace{1\zw}
+	\else
+		\ifxetex
+			\vspace{11pt}
 		\else
-			\ifxetex
-				\vspace{11pt}
-			\else
 			\vspace{1em}
 		\fi
 	\fi
