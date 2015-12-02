@@ -5,6 +5,8 @@
 \newcommand{\notoc}{\notoctrue}%
 \newif\ifnosubtoc\nosubtocfalse%
 \newcommand{\nosubtoc}{\nosubtoctrue}%
+\newif\ifskipnexttoc\skipnexttocfalse
+\newcommand{\skipnexttoc}{\skipnexttoctrue}
 %%%%% {{{
 \makeatletter%
 \ifluatex\else%
@@ -93,7 +95,7 @@
 %%%%% }}}
 %%%%% {{{
 \AtBeginSection[]{%
-	\ifnotoc\else%
+	\ifnotoc\else\ifskipnexttoc\skipnextfalse\else%
 		\switchfooter%
 		\switchheader
 		\begin{frame}<beamer>%
@@ -104,7 +106,7 @@
 		\stepcounter{tocpage}%
 		\switchfooter%
 		\switchheader
-	\fi%
+	\fi\fi%
 }%
 \AtBeginSubsection[]{%
 	\ifnotoc\else\ifnosubtoc\else%
