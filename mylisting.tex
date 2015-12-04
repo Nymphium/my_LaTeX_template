@@ -20,7 +20,8 @@
 \definecolor{waterblue}{HTML}{4169E1}
 \definecolor{text}{HTML}{3CB371}
 \definecolor{stdout}{HTML}{DC143C}
-\definecolor{yellow}{HTML}{FFAF00}
+\definecolor{yellow}{HTML}{FFC332}
+\definecolor{orange}{HTML}{EB9100}
 
 \lstset{
 	float=hbp,
@@ -49,13 +50,16 @@
 	captionpos=t,
 }
 \lstdefinelanguage{MoonScript}{
-	keywords={class,when,for,in,while,with,do,import,from,return,and,or,local,not,break,continue,extends},
+	alsoletter={=,-,>,\\},
+	keywords={class,when,for,in,while,with,do,import,from,return,and,or,local,not,break,continue,extends,\\},
 	keywordstyle=\ttfamily\color{yellow},
 	comment=[l]{--},
 	keywords=[2]{if,else,elseif,when,switch,then},
 	keywordstyle=[2]\ttfamily\color{text},
 	morestring=[b]",
-	morestring=[b]'
+	morestring=[b]',
+	keywords=[3]{=>,->},
+	keywordstyle=[3]\ttfamily\color{orange}
 }
 
 \newcommand{\mylisting}[2][]{%
