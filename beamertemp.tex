@@ -7,6 +7,12 @@
 \newcommand{\nosubtoc}{\nosubtoctrue}%
 \newif\ifskipnexttoc\skipnexttocfalse
 \newcommand{\skipnexttoc}{\skipnexttoctrue}
+\newcounter{toccolnum}%
+\newif\iftocmonocol\tocmonocolfalse%
+\newcommand{\toccolnum}[1]{%
+	\ifnum#1<2 \tocmonocoltrue\else\setcounter{toccolnum}{#1}\fi%
+}\toccolnum{2}%
+\newenvironment{toccol}{\iftocmonocol\relax\else\begin{multicols}{\thetoccolnum}\fi}{\iftocmonocol\relax\else\end{multicols}\fi}%
 %%%%% {{{
 \makeatletter%
 \ifluatex\else%
@@ -56,7 +62,6 @@
 \setbeamercolor{headline}{fg=blue}%
 \setbeamercolor{subheadline}{fg=gray}%
 \setbeamertemplate{navigation symbols}{}%
-% \addtobeamertemplate{footline}{}{\vspace*{3\zw}}%
 %%%%% }}}
 %%%%% {{{
 \setbeamertemplate{footnote}{%
@@ -99,9 +104,9 @@
 		\switchfooter%
 		\switchheader
 		\begin{frame}<beamer>%
-			\begin{multicols}{2}%
+			\begin{toccol}%
 				\tableofcontents[currentsection,sectionstyle=show/shaded,subsectionstyle=show/shaded]%
-			\end{multicols}%
+			\end{toccol}%
 		\end{frame}%
 		\stepcounter{tocpage}%
 		\switchfooter%
@@ -113,9 +118,9 @@
 		\switchfooter%
 		\switchsubheader%
 		\begin{frame}<beamer>%
-			\begin{multicols}{2}%
+			\begin{toccol}%
 				\tableofcontents[currentsubsection,sectionstyle=show/shaded,subsectionstyle=show/shaded]%
-			\end{multicols}%
+			\end{toccol}%
 		\end{frame}%
 		\stepcounter{tocpage}%
 		\switchfooter%
