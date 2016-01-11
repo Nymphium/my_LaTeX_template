@@ -50,18 +50,24 @@
 	captionpos=t,
 }
 \lstdefinelanguage{MoonScript}{
-	alsoletter={=,-,>,\\},
-	keywords={class,when,for,in,while,with,do,import,from,return,and,or,local,not,break,continue,extends,\\},
+	alsoletter={=,-,>,<,*,+,/},
+	keywords={=,-,>,<,*,+,/,class,when,for,in,while,with,do,import,from,return,and,or,local,not,break,continue,extends},
 	keywordstyle=\ttfamily\color{yellow},
 	comment=[l]{--},
-	keywords=[2]{if,else,elseif,when,switch,then},
+	keywords=[2]{if,else,elseif,when,switch,then,unless},
 	keywordstyle=[2]\ttfamily\color{text},
 	morestring=[b]",
 	morestring=[b]',
 	keywords=[3]{=>,->},
-	keywordstyle=[3]\ttfamily\color{orange}
+	keywordstyle=[3]\ttfamily\color{orange},
+	literate={<B>}{}1
+		{\{}{\textcolor{magenta}{\{}}1
+		{\}}{\textcolor{magenta}{\}}}1
+		{[}{\textcolor{magenta}{[}}1
+		{]}{\textcolor{magenta}{]}}1
+		% {(}{\textcolor{magenta}{(}}1
+		% {)}{\textcolor{magenta}{)}}1
 }
-
 \newcommand{\mylisting}[2][]{%
 	\bgroup%
 	\renewcommand*{\lstlistingname}{\tt\small Code}%
