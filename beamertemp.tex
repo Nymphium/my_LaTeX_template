@@ -26,6 +26,8 @@
 \newcommand{\switchheader}{\ifnoheader\noheaderfalse\else\noheadertrue\fi}%
 \newif\ifnosubheader\nosubheadertrue%
 \newcommand{\switchsubheader}{\ifnosubheader\nosubheaderfalse\else\nosubheadertrue\fi}%
+\newif\ifnoframetitle\nosubheaderfalse%
+\newcommand{\switchframetitle}{\ifnosubheader\nosubheaderfalse\else\nosubheadertrue\fi}%
 \renewcommand{\title}{\@dblarg\beamer@title}%
 \long\def\beamer@title[#1]#2{%
 	\def\thetitle{#2}%
@@ -70,7 +72,7 @@
 }%
 \setbeamertemplate{frametitle}{%
 	\begin{beamercolorbox}{frametitle}%
-		\hfill\hbox{{\large$\bullet$\insertframetitle}}%
+		\hfill\hbox{\ifnoframetitle\else{\large$\bullet$\insertframetitle}\fi}%
 	\end{beamercolorbox}%
 }%
 \setbeamertemplate{footline}{%
