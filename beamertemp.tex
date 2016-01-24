@@ -26,8 +26,8 @@
 \newcommand{\switchheader}{\ifnoheader\noheaderfalse\else\noheadertrue\fi}%
 \newif\ifnosubheader\nosubheadertrue%
 \newcommand{\switchsubheader}{\ifnosubheader\nosubheaderfalse\else\nosubheadertrue\fi}%
-\newif\ifnoframetitle\nosubheaderfalse%
-\newcommand{\switchframetitle}{\ifnosubheader\nosubheaderfalse\else\nosubheadertrue\fi}%
+\newif\ifnoframetitle\noframetitlefalse%
+\newcommand{\switchframetitle}{\ifnoframetitle\noframetitlefalse\else\noframetitletrue\fi}%
 \renewcommand{\title}{\@dblarg\beamer@title}%
 \long\def\beamer@title[#1]#2{%
 	\def\thetitle{#2}%
