@@ -18,10 +18,11 @@
 \definecolor{str}{HTML}{FF1493}
 \definecolor{gold}{HTML}{FFA500}
 \definecolor{waterblue}{HTML}{4169E1}
-\definecolor{text}{HTML}{3CB371}
+\definecolor{text}{HTML}{2a9900}
 \definecolor{stdout}{HTML}{DC143C}
-\definecolor{yellow}{HTML}{FFC332}
-\definecolor{orange}{HTML}{EB9100}
+\definecolor{yellow}{HTML}{B58900}
+\definecolor{orange}{HTML}{CB4B16}
+\definecolor{blue}{HTML}{268bd2}
 
 \lstset{
 	float=hbp,
@@ -50,11 +51,11 @@
 	captionpos=t,
 }
 \lstdefinelanguage{MoonScript}{
-	alsoletter={=,-,>,<,*,+,/},
-	keywords={=,-,>,<,*,+,/,class,when,for,in,while,with,do,import,from,return,and,or,local,not,break,continue,extends},
+	alsoletter={=,-,>,<,*,+,/,-=,+=,@,\^,~},
+	keywords={=,-,>,<,*,+,/,-=,+=,*=,/=,//=,<<=,>>=,>>,<<,~,==,\^,class,for,in,while,with,do,import,from,return,and,or,local,not,break,continue,extends},
 	keywordstyle=\ttfamily\color{yellow},
 	comment=[l]{--},
-	keywords=[2]{if,else,elseif,when,switch,then,unless},
+	keywords=[2]{if,else,elseif,when,switch,then,unless,@},
 	keywordstyle=[2]\ttfamily\color{text},
 	morestring=[b]",
 	morestring=[b]',
