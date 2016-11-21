@@ -35,7 +35,7 @@
 	\def\beamer@shorttitle{#1}%
 }%
 \def\maketitle{\ifbeamer@inframe\titlepage\else\frame{\titlepage}\fi\nofooterfalse}%
-\renewcommand{\footnoterule}{}%
+% \renewcommand{\footnoterule}{}%
 \def\@makefnmark{\hbox{\@textsuperscript{{\usebeamercolor[fg]{footnote mark}\usebeamerfont*{footnote mark}{*\@thefnmark}}}}}%
 \def\inserttotaltocpage{0\relax}%
 \AtEndDocument{%
@@ -69,6 +69,7 @@
 \setbeamertemplate{footnote}{%
 	\tiny%
 	\makebox[2em][l]{\insertfootnotemark}\hspace{-.7\zw}\insertfootnotetext%
+	\vspace{.1\zw}%
 }%
 \setbeamertemplate{frametitle}{%
 	\begin{beamercolorbox}{frametitle}%
