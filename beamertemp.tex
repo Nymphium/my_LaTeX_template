@@ -102,7 +102,7 @@
 \addtobeamertemplate{headline}{\vspace*{1\zw}}{}%
 %%%%% }}}
 %%%%% {{{
-\newcommand{\toc}[1]{
+\newcommand{\TableOfContents}[1]{
     \switchfooter%
     \switchheader
     \begin{frame}<beamer>%
@@ -116,12 +116,12 @@
 }
 \AtBeginSection[]{%
   \ifnotoc\else\ifskipnexttoc\skipnexttocfalse\else%
-    \toc{currentsection}
+    \TableOfContents{currentsection}
   \fi\fi%
 }%
 \AtBeginSubsection[]{%
   \ifnotoc\else\ifnosubtoc\else%
-    \toc{currentsubsection}
+    \TableOfContents{currentsubsection}
   \fi\fi%
 }%
 %%%%% }}}
