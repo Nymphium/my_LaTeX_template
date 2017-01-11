@@ -72,7 +72,7 @@
 \newcommand{\mylisting}[2][]{%
 	\bgroup%
 	% \renewcommand*{\lstlistingname}{\tt\small Code}%
-	\lstinputlisting[caption={\tt\small\detokenize{#2}},#1]{#2}%
+	\lstinputlisting[caption={\small\detokenize{\texttt{#2}}},#1]{#2}%
 	\ifluatex%
 		\vspace{1\zw}%
 		\else%
@@ -90,7 +90,7 @@
 		language=,
 		numbers=none,
 		nolol,
-		title={\tt\small #2},
+		title={\small\texttt{#2}},
 		#1
 	}
 }{
