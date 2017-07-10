@@ -1,5 +1,6 @@
-\usepackage{multicol,hanging,ifluatex}%
+\usepackage{multicol,hanging,ifluatex,xcolor}%
 \usecolortheme{lily}%
+\definecolor{titlegreen}{HTML}{88a94c}
 \mathversion{bold}%
 \newif\ifnotoc\notocfalse%
 \newcommand{\notoc}{\notoctrue}%
@@ -54,13 +55,13 @@
 %%%%% {{{
 \newcounter{currentwotocframenumber}%
 \newcounter{wotoctotalframenumber}%
-\setbeamerfont{frametitle}{size=\footnotesize,family=\rmfamily}%
-\setbeamerfont{section in toc}{family=\rmfamily}%
-\setbeamerfont{subsection in toc}{family=\rmfamily}%
+\setbeamerfont{frametitle}{size=\footnotesize}%
+% \setbeamerfont{section in toc}{family=\rmfamily}%
+% \setbeamerfont{subsection in toc}{family=\rmfamily}%
 \setbeamercolor{section in head/foot}{fg=blue}%
 \setbeamercolor{subsection in head/foot}{fg=blue}%
 \setbeamercolor{footline}{fg=gray}%
-\setbeamercolor{frametitle}{fg=green}%
+\setbeamercolor{frametitle}{fg=titlegreen}%
 \setbeamercolor{headline}{fg=blue}%
 \setbeamercolor{subheadline}{fg=gray}%
 \setbeamertemplate{navigation symbols}{}%
