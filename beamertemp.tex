@@ -36,7 +36,6 @@
   \def\beamer@shorttitle{#1}%
 }%
 \def\maketitle{\ifbeamer@inframe\titlepage\else\frame{\titlepage}\fi\nofooterfalse}%
-% \renewcommand{\footnoterule}{}%
 \def\@makefnmark{\hbox{\@textsuperscript{{\usebeamercolor[fg]{footnote mark}\usebeamerfont*{footnote mark}{*\@thefnmark}}}}}%
 \def\inserttotaltocpage{0\relax}%
 \AtEndDocument{%
@@ -50,18 +49,24 @@
 \makeatother%
 %%%%% }}}
 %%%%% {{{
+% overwrite `\framesubtitle` to be showable wheather frametitle is set or not
+\let\oldframesubtitle\framesubtitle
+\renewcommand{\framesubtitle}[1]{%
+  \frametitle{\empty}
+  \oldframesubtitle{#1}
+}
 \newcommand\frametitlesec{\frametitle{\insertsectionhead}}
-\newcommand\frametitlesubs{\frametitle{\insertsubsectionhead}}
+\newcommand\frametitlesubs{\framesubtitle{\insertsubsectionhead}}
 %%%%% {{{
 \newcounter{currentwotocframenumber}%
 \newcounter{wotoctotalframenumber}%
 \setbeamerfont{frametitle}{size=\footnotesize}%
-% \setbeamerfont{section in toc}{family=\rmfamily}%
-% \setbeamerfont{subsection in toc}{family=\rmfamily}%
+\setbeamerfont{framesubtitle}{size=\small}
 \setbeamercolor{section in head/foot}{fg=blue}%
 \setbeamercolor{subsection in head/foot}{fg=blue}%
 \setbeamercolor{footline}{fg=gray}%
 \setbeamercolor{frametitle}{fg=titlegreen}%
+\setbeamercolor{framesubtitle}{fg=titlegreen!85!}
 \setbeamercolor{headline}{fg=blue}%
 \setbeamercolor{subheadline}{fg=gray}%
 \setbeamertemplate{navigation symbols}{}%
@@ -70,13 +75,18 @@
 \setbeamertemplate{footnote}{%
   \tiny%
   \makebox[2em][l]{\insertfootnotemark}\hspace{-.7\zw}\insertfootnotetext%
-  \vspace{.1\zw}%
-}%
+  \vspace{.1\zw}}%
 \setbeamertemplate{frametitle}{%
-  \begin{beamercolorbox}{frametitle}%
-    \hfill\hbox{\ifnoframetitle\else{\large$\bullet$\insertframetitle}\fi}%
-  \end{beamercolorbox}%
-}%
+  \ifnoframetitle\else%
+    \ifx\insertframesubtitle\empty%
+      \begin{beamercolorbox}{frametitle}%
+        \hfill\hbox{{\large$\bullet$\insertframetitle}}%
+      \end{beamercolorbox}%
+    \else%
+      \begin{beamercolorbox}{framesubtitle}%
+        \hfill\hbox{{\small$\bullet$\insertframesubtitle}}%
+      \end{beamercolorbox}
+    \fi\fi}%
 \setbeamertemplate{footline}{%
   \leavevmode%
   \vspace{1\zw}
@@ -90,16 +100,14 @@
     \addtocounter{currentwotocframenumber}{-1}%
     \addtocounter{currentwotocframenumber}{-\thetocpage}%
     \hfill\hbox{\ifnofooter\else\thecurrentwotocframenumber/\thewotoctotalframenumber\fi\hspace{.8\zw}}%
-  \end{beamercolorbox}%
-}%
+  \end{beamercolorbox}}%
 \setbeamertemplate{headline}{%
   \begin{beamercolorbox}{headline}%
     \centering\hbox{\ifnoheader\else\large\thetitle\fi}%
   \end{beamercolorbox}%
   \begin{beamercolorbox}{subheadline}%
     \centering\hbox{\ifnosubheader\else\large\thetitle\fi}%
-  \end{beamercolorbox}%
-}%
+  \end{beamercolorbox}}%
 \addtobeamertemplate{headline}{\vspace*{1\zw}}{}%
 %%%%% }}}
 %%%%% {{{
@@ -113,16 +121,13 @@
     \end{frame}%
     \stepcounter{tocpage}%
     \switchfooter%
-    \switchheader
-}
+    \switchheader}
 \AtBeginSection[]{%
   \ifnotoc\else\ifskipnexttoc\skipnexttocfalse\else%
     \TableOfContents{currentsection}
-  \fi\fi%
-}%
+  \fi\fi}%
 \AtBeginSubsection[]{%
   \ifnotoc\else\ifnosubtoc\else%
     \TableOfContents{currentsubsection}
-  \fi\fi%
-}%
+  \fi\fi}%
 %%%%% }}}
