@@ -1,6 +1,6 @@
-\usepackage{multicol,hanging,ifluatex,xcolor}%
+\usepackage{multicol,hanging,ifluatex,xcolor,xhfill}%
 \usecolortheme{lily}%
-\definecolor{titlegreen}{HTML}{88a94c}
+\definecolor{titleblue}{HTML}{0f61b1}
 \newif\ifnotoc\notocfalse%
 \newcommand{\notoc}{\notoctrue}%
 \newif\ifnosubtoc\nosubtocfalse%
@@ -19,6 +19,13 @@
   \newlength\zw%
   \zw=1zw\relax%
 \fi%
+%%
+\geometry{
+    top=3pt,
+    left=1\zw,
+    right=1\zw,
+}
+%%
 \newcounter{tocpage}%
 \newif\ifnofooter\nofootertrue%
 \newcommand{\switchfooter}{\ifnofooter\nofooterfalse\else\nofootertrue\fi}%
@@ -64,8 +71,8 @@
 \setbeamercolor{section in head/foot}{fg=blue}%
 \setbeamercolor{subsection in head/foot}{fg=blue}%
 \setbeamercolor{footline}{fg=gray}%
-\setbeamercolor{frametitle}{fg=titlegreen}%
-\setbeamercolor{framesubtitle}{fg=titlegreen!85!}
+\setbeamercolor{frametitle}{fg=titleblue}%
+\setbeamercolor{framesubtitle}{fg=titleblue!85!}
 \setbeamercolor{headline}{fg=blue}%
 \setbeamercolor{subheadline}{fg=gray}%
 \setbeamertemplate{navigation symbols}{}%
@@ -79,11 +86,13 @@
   \ifnoframetitle\else%
     \ifx\insertframesubtitle\empty%
       \begin{beamercolorbox}{frametitle}%
-        \hfill\hbox{{\large$\bullet$\insertframetitle}}%
+        \hbox{{\large$\blacksquare$\insertframetitle}}\par%
+        \vskip-.7\zh\xhrulefill{titleblue}{1pt}
       \end{beamercolorbox}%
     \else%
       \begin{beamercolorbox}{framesubtitle}%
-        \hfill\hbox{{\small$\bullet$\insertframesubtitle}}%
+        \hbox{{\large$\bullet$\insertframesubtitle}}\par%
+        \vskip-.7\zh\xhrulefill{titleblue}{1pt}
       \end{beamercolorbox}
     \fi\fi}%
 \setbeamertemplate{footline}{%
