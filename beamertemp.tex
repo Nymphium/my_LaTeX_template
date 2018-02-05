@@ -1,4 +1,4 @@
-\usepackage{multicol,hanging,ifluatex,xcolor,xhfill}%
+\usepackage{multicol,hanging,ifluatex,xcolor,xhfill,amsmath}%
 \usecolortheme{lily}%
 \definecolor{titleblue}{HTML}{0f61b1}
 \newif\ifnotoc\notocfalse%
@@ -13,7 +13,7 @@
   \ifnum#1<2 \tocmonocoltrue\else\setcounter{toccolnum}{#1}\fi%
 }\toccolnum{2}%
 \newenvironment{toccol}{\iftocmonocol\relax\else\begin{multicols}{\thetoccolnum}\fi}{\iftocmonocol\relax\else\end{multicols}\fi}%
-%%%%% {{{
+%%%%% [[[
 \makeatletter%
 \ifluatex\else%
   \newlength\zw%
@@ -53,8 +53,8 @@
   \fi%
 }%
 \makeatother%
-%%%%% }}}
-%%%%% {{{
+%%%%% ]]]
+%%%%% [[[
 % overwrite `\framesubtitle` to be showable wheather frametitle is set or not
 \let\oldframesubtitle\framesubtitle
 \renewcommand{\framesubtitle}[1]{%
@@ -63,7 +63,7 @@
 }
 \newcommand\frametitlesec{\frametitle{\insertsectionhead}}
 \newcommand\frametitlesubs{\framesubtitle{\insertsubsectionhead}}
-%%%%% {{{
+%%%%% [[[
 \newcounter{currentwotocframenumber}%
 \newcounter{wotoctotalframenumber}%
 \setbeamerfont{frametitle}{size=\footnotesize}%
@@ -76,8 +76,9 @@
 \setbeamercolor{headline}{fg=blue}%
 \setbeamercolor{subheadline}{fg=gray}%
 \setbeamertemplate{navigation symbols}{}%
-%%%%% }}}
-%%%%% {{{
+\setbeamertemplate{itemize subitem}[circle]
+%%%%% ]]]
+%%%%% [[[
 \setbeamertemplate{footnote}{%
   \tiny%
   \makebox[2em][l]{\insertfootnotemark}\hspace{-.7\zw}\insertfootnotetext%
@@ -117,8 +118,8 @@
     \centering\hbox{\ifnosubheader\else\large\thetitle\fi}%
   \end{beamercolorbox}}%
 \addtobeamertemplate{headline}{\vspace*{1\zw}}{}%
-%%%%% }}}
-%%%%% {{{
+%%%%% ]]]
+%%%%% [[[
 \newcommand{\TableOfContents}[1]{
     \switchfooter%
     \switchheader
@@ -138,4 +139,4 @@
   \ifnotoc\else\ifnosubtoc\else%
     \TableOfContents{currentsubsection}
   \fi\fi}%
-%%%%% }}}
+%%%%% ]]]
