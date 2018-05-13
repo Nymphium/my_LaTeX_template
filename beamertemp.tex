@@ -41,7 +41,26 @@
   \def\inserttitle{#2}%
   \def\beamer@shorttitle{#1}%
 }%
-\def\maketitle{\ifbeamer@inframe\titlepage\else\frame{\titlepage}\fi\nofooterfalse}%
+\def\maketitle{
+  \ifbeamer@inframe
+    \titlepage
+  \else
+    \frame{\titlepage}
+  \fi
+  %%
+  \ifnotoc\else
+    \switchfooter
+    \switchheader
+    \begin{frame}<handout>[c]
+      \begin{toccol}
+        \tableofcontents
+      \end{toccol}
+    \end{frame}
+    \stepcounter{tocpage}
+    \switchfooter
+    \switchheader
+  \fi
+  \nofooterfalse}%
 \def\@makefnmark{\hbox{\@textsuperscript{{\usebeamercolor[fg]{footnote mark}\usebeamerfont*{footnote mark}{*\@thefnmark}}}}}%
 \def\inserttotaltocpage{0\relax}%
 \AtEndDocument{%
