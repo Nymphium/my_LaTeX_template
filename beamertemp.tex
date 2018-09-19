@@ -107,12 +107,12 @@
   \ifnoframetitle\else%
     \ifx\insertframesubtitle\empty%
       \begin{beamercolorbox}{frametitle}%
-        \hbox{{\large$\blacksquare$\insertframetitle}}\par%
+        {\large$\blacksquare$\insertframetitle}\par%
         \vskip-.7\zh\xhrulefill{titleblue}{1pt}
       \end{beamercolorbox}%
     \else%
       \begin{beamercolorbox}{framesubtitle}%
-        \hbox{{\large$\bullet$\insertframesubtitle}}\par%
+        {\large$\bullet$\insertframesubtitle}\par%
         \vskip-.7\zh\xhrulefill{titleblue}{1pt}
       \end{beamercolorbox}
     \fi\fi}%
@@ -132,10 +132,10 @@
   \end{beamercolorbox}}%
 \setbeamertemplate{headline}{%
   \begin{beamercolorbox}{headline}%
-    \centering\hbox{\ifnoheader\else\large\thetitle\fi}%
+    \centering\ifnoheader\else\large\thetitle\fi%
   \end{beamercolorbox}%
   \begin{beamercolorbox}{subheadline}%
-    \centering\hbox{\ifnosubheader\else\large\thetitle\fi}%
+    \centering\ifnosubheader\else\large\thetitle\fi%
   \end{beamercolorbox}}%
 \addtobeamertemplate{headline}{\vspace*{1\zw}}{}%
 %%%%% ]]]
