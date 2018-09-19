@@ -21,14 +21,14 @@
 \fi%
 %%
 \geometry{
-    top=3pt,
-    left=1\zw,
-    right=1\zw,
+  top=3pt,
+  left=1\zw,
+  right=1\zw,
 }
 %%
-\newcounter{tocpage}%
 \newif\ifnofooter\nofootertrue%
 \newcommand{\switchfooter}{\ifnofooter\nofooterfalse\else\nofootertrue\fi}%
+\preto\frame{\ifnofooter{\ifbeamer@noframenumbering\else\addtocounter{framenumber}{-1}\fi}\fi}
 \newif\ifnoheader\noheadertrue%
 \newcommand{\switchheader}{\ifnoheader\noheaderfalse\else\noheadertrue\fi}%
 \newif\ifnosubheader\nosubheadertrue%
@@ -56,21 +56,11 @@
         \tableofcontents
       \end{toccol}
     \end{frame}
-    \stepcounter{tocpage}
     \switchfooter
     \switchheader
   \fi
   \nofooterfalse}%
 \def\@makefnmark{\hbox{\@textsuperscript{{\usebeamercolor[fg]{footnote mark}\usebeamerfont*{footnote mark}{*\@thefnmark}}}}}%
-\def\inserttotaltocpage{0\relax}%
-\AtEndDocument{%
-  \clearpage%
-  \beamer@tempcount=\c@page\advance\beamer@tempcount by -1%
-  \if@filesw%
-    \immediate\write\@auxout{\string\@writefile{nav}%
-    {\noexpand\headcommand{\noexpand\def\noexpand\inserttotaltocpage{\thetocpage}}}}%
-  \fi%
-}%
 \makeatother%
 %%%%% ]]]
 %%%%% [[[
@@ -123,11 +113,11 @@
     \tiny%
     \hspace{.4\zw}\hbox{\ifnofooter\else\insertsectionhead\ifx\insertsubsectionhead\empty\else{}.\insertsubsectionhead\fi\fi}%
     \setcounter{wotoctotalframenumber}{\inserttotalframenumber}%
-    \addtocounter{wotoctotalframenumber}{-\inserttotaltocpage}%
+    % \addtocounter{wotoctotalframenumber}{-\inserttotaltocpage}%
     \addtocounter{wotoctotalframenumber}{-1}%
     \setcounter{currentwotocframenumber}{\theframenumber}%
     \addtocounter{currentwotocframenumber}{-1}%
-    \addtocounter{currentwotocframenumber}{-\thetocpage}%
+    % \addtocounter{currentwotocframenumber}{-\thetocpage}%
     \hfill\hbox{\ifnofooter\else\thecurrentwotocframenumber/\thewotoctotalframenumber\fi\hspace{.8\zw}}%
   \end{beamercolorbox}}%
 \setbeamertemplate{headline}{%
@@ -148,7 +138,6 @@
         \tableofcontents[#1,sectionstyle=show/shaded,subsectionstyle=show/shaded]%
       \end{toccol}%
     \end{frame}%
-    \stepcounter{tocpage}%
     \switchfooter%
     \switchheader}
 \AtBeginSection[]{%
