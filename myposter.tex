@@ -1,0 +1,109 @@
+\documentclass[unicode,compress,final,mathserif]{beamer}
+
+\usepackage[orientation=portrait,size=a0,scale=1.4]{beamerposter}
+\usepackage{luatexja}
+\usepackage{indentfirst}
+\usepackage{xcolor}
+\usepackage{xhfill}
+\usepackage{luacode}
+\usepackage[normalem,normalbf]{ulem}
+\usepackage[most]{tcolorbox}
+\geometry{
+    left=5pt,
+    right=5pt,
+    bottom=0pt
+}
+
+\begin{luacode*}
+    subauthors = setmetatable({}, {
+        __tostring = function(self)
+        return table.concat(self, " ")
+    end})
+\end{luacode*}
+
+\newcommand{\belonging}[1]{\def\insertbelonging{#1}}
+\newcommand{\addauthor}[1]{%
+\directlua{table.insert(subauthors, \asluastring{#1})}}
+
+\makeatletter
+\renewcommand{\author}{\@dblarg\beamer@author}
+\long\def\beamer@author[#1]#2{%
+\def\@firstauthor{#1}}
+
+\renewcommand{\title}{\@dblarg\beamer@title}%
+\long\def\beamer@title[#1]#2{%
+    \def\thetitle{#1}
+    \def\inserttitle{#2}%
+\def\beamer@shorttitle{#1}}%
+
+\setbeamertemplate{headline}{%
+    \def\insertauthor{\@firstauthor,\directlua{tex.print(subauthors)}}
+    \begin{beamercolorbox}[dp=5pt,sep=6pt,rightskip=5pt,leftskip=5pt]{headline}%
+        \setlength{\parskip}{.35\zh}%
+        \noindent%
+        \xhrulefill{green!70}{.28\zh}\newline
+        \xhrulefill{blue}{.42\zh}\newline
+        \begin{center}
+            \vskip-2\zh
+            \huge{}\textbf{\inserttitle}
+            \vskip-1\zh
+        \end{center}
+        \setlength{\parskip}{.5\zh}
+        {\Large\hfill \uline{\@firstauthor} \directlua{tex.print(subauthors)} (\insertbelonging\relax)}\rule{.8\zw}{0pt}\newline\newline
+        \xhrulefill{blue}{.42\zh}\newline
+        \xhrulefill{green!70}{.28\zh}
+\end{beamercolorbox}}
+\makeatother
+
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[sep=0pt,dp=9pt,rightskip=5pt,leftskip=5pt]{footline}%
+        \setlength{\parskip}{.3\zh}%
+        \noindent\xhrulefill{blue}{.42\zh}\newline
+        \xhrulefill{green!70}{.21\zh}
+    \end{beamercolorbox}}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography item}{\color{black}\insertbiblabel}
+\setbeamertemplate{bibliography entry title}{}
+\setbeamertemplate{bibliography entry location}{}
+\setbeamertemplate{bibliography entry note}{}
+\setbeamercolor*{bibliography entry title}{fg=black}
+\setbeamercolor*{bibliography entry item}{fg=black}
+\setbeamercolor*{bibliography entry author}{fg=black}
+\setbeamercolor*{bibliography entry location}{fg=black}
+\setbeamercolor*{bibliography entry note}{fg=black}
+
+\newtcolorbox{newbie}{
+    enhanced,
+    boxrule=0pt,
+    right skip=0pt,
+    left skip=0pt,
+    boxsep=0pt,
+    right=.3em,
+    left=.3em,
+    sharp corners,
+    colback=blue!20,
+}
+
+
+\newtcolorbox{somecolorbox}[2]{
+    title=#2,
+    enhanced,
+    colback=white,
+    colframe=#1,
+    boxrule=0.06\zw,
+    right skip=0pt,
+    left skip=0pt,
+    boxsep=0.2\zw,
+    top=0pt,
+    bottom=0pt,
+    enlarge bottom by = .3\baselineskip,
+    sharp corners}
+
+\newenvironment{bluebox}[1]{\begin{somecolorbox}{blue}{#1}}{\end{somecolorbox}}
+\newenvironment{greenbox}[1]{\begin{somecolorbox}{green!50}{#1}}{\end{somecolorbox}}
+\newenvironment{redbox}[1]{\begin{somecolorbox}{red!50!}{#1}}{\end{somecolorbox}}
+
+\settowidth{\leftmargini}{\usebeamertemplate{itemize item}}
+\addtolength{\leftmargini}{\labelsep}
+
