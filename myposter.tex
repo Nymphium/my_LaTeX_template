@@ -1,4 +1,4 @@
-\documentclass[unicode,compress,final,mathserif]{beamer}
+\documentclass[unicode,compress,final,mathserif,t]{beamer}
 
 \usepackage[orientation=portrait,size=a0,scale=1.4]{beamerposter}
 \usepackage{luatexja}
@@ -38,7 +38,7 @@
 
 \setbeamertemplate{headline}{%
     \def\insertauthor{\@firstauthor,\directlua{tex.print(subauthors)}}
-    \begin{beamercolorbox}[dp=5pt,sep=6pt,rightskip=5pt,leftskip=5pt]{headline}%
+    \begin{beamercolorbox}[dp=5pt,sep=6pt,rightskip=0pt,leftskip=0pt]{headline}%
         \setlength{\parskip}{.35\zh}%
         \noindent%
         \xhrulefill{green!70}{.28\zh}\newline
@@ -52,11 +52,11 @@
         {\Large\hfill \uline{\@firstauthor} \directlua{tex.print(subauthors)} (\insertbelonging\relax)}\rule{.8\zw}{0pt}\newline\newline
         \xhrulefill{blue}{.42\zh}\newline
         \xhrulefill{green!70}{.28\zh}
-\end{beamercolorbox}}
+    \end{beamercolorbox}}
 \makeatother
 
 \setbeamertemplate{footline}{%
-    \begin{beamercolorbox}[sep=0pt,dp=9pt,rightskip=5pt,leftskip=5pt]{footline}%
+    \begin{beamercolorbox}[sep=0pt,dp=9pt,rightskip=6pt,leftskip=6pt]{footline}%
         \setlength{\parskip}{.3\zh}%
         \noindent\xhrulefill{blue}{.42\zh}\newline
         \xhrulefill{green!70}{.21\zh}
@@ -85,15 +85,15 @@
     colback=blue!20,
 }
 
-
 \newtcolorbox{somecolorbox}[2]{
-    title=#2,
+    title=\hskip-.6em#2,
     enhanced,
     colback=white,
     colframe=#1,
     boxrule=0.06\zw,
-    right skip=0pt,
-    left skip=0pt,
+    right skip=5pt,
+    left skip=5pt,
+    left = .6em,
     boxsep=0.2\zw,
     top=0pt,
     bottom=0pt,
